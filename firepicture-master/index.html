@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>A Pen by Jesus Alejandro Atao</title>
+    <link rel='stylesheet prefetch' href='style.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='http://fezvrasta.github.io/bootstrap-material-design/dist/css/bootstrap-material-design.css'>
+    <link rel='stylesheet prefetch' href='http://fezvrasta.github.io/bootstrap-material-design/dist/css/ripples.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css'>
+</head>
+
+<body>
+    <!--
+Database Rules
+
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+Storage Rules
+
+service firebase.storage {
+  match /b/firepicture2.appspot.com/o {
+    match /{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
+
+-->
+    <div ng-app="myApp">
+        <div ng-controller="imagesController as vm">
+            <h1 class="text-info" align="center">Upload Images to Firebase 3</h1>
+            <br />
+            <input type="file" accept="image/*" custom-on-change="vm.image" />
+            <br>
+            <div ng-repeat="image in vm.images | orderBy: '-date'" class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <img ng-src="{{image.url}}">
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="{{image.url}}" class="btn btn-info btn-block" download>Download</a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a class="btn btn-danger btn-block" ng-click="vm.deleteImg(image.$id)">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/3.4.1/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js'></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

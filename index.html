@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fotografia</title>
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+	    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/3.4.1/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js'></script>
+    <script src="js/index.js"></script>
+	
+	<header>
+		<div class="container2" role="main">
+		<h1>Comenzando con la fotografía</h1>
+		<br>
+		<br>
+	<div>
+    	<a href="index.html">Inicio</a></li>
+    </div>
+    <div>
+   		<a href="paisajes.html">Paisajes</a></li>
+	</div>
+   	<div>
+       <a href="retratos.html">Retratos</a></li>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+	
+</div>
+	</header>
+</head>
+<body>
+	<section id="contenido">
+		<div id="con1">
+			<br>
+			<br>
+			<img src="img/paisajes-bonitos-de-otoño-lago.jpg">
+			<br>
+			<br>
+			    <div ng-app="myApp">
+        <div ng-controller="imagesController as vm">
+            <h1 class="text-info" align="center">Upload Images to Firebase 3</h1>
+            <br />
+            <input type="file" accept="image/*" custom-on-change="vm.image" />
+            <br>
+            <div ng-repeat="image in vm.images | orderBy: '-date'" class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <img ng-src="{{image.url}}">
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="{{image.url}}" class="btn btn-info btn-block" download>Download</a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a class="btn btn-danger btn-block" ng-click="vm.deleteImg(image.$id)">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+		</div>
+		<div id="con2">
+			<br>
+			<br>	
+			<img id="im2" src="img/im1.png" >
+			<img id="im1" src="img/splash.jpg">
+			<br>
+			<br>
+		</div>
+
+		
+	</section>
+	<footer>
+<div class="container" role="main">
+	<div >
+		<h2>Contacto</h2>
+		<p>Correo: alejo12381@hotmail.es</p>
+		<p>Tel: 30169584480</p>
+		<p>Dirección: Cra93D No72-47norte</p>
+	</div>
+	<br>
+	<br>
+	<div>
+		<h2>Terminos</h2>
+		<p>Imagenes tomadas de la web </p>
+	</div>
+	<div >
+		<h2>Redes Sociales</h2>
+		<p>Facebook</p>
+		<p>Twiter</p>
+		<p>Instagram</p>
+	</div>
+	<div >
+		<h2>Derechos</h2>
+		<p>Todos los derechos reservados 2017</p>
+	</div>
+
+</div>
+	</footer>
+
+</body>
+</html>
